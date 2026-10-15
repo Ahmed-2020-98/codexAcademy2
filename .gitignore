@@ -21,6 +21,7 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
-/.vercel
 /dist
 /database/*.sqlite*
+# Vercel CLI project metadata (also created by `vercel link`).
+.vercel
