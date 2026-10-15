@@ -1,5 +1,10 @@
 <?php
 
+// This router lives under /api, but Laravel is mounted at the site root.
+// Otherwise Symfony strips /api from API requests as the script base URL.
+$_SERVER['SCRIPT_NAME'] = '/index.php';
+$_SERVER['PHP_SELF'] = '/index.php';
+
 // Vercel's deployment bundle is read-only; only runtime caches belong in /tmp.
 $runtime = sys_get_temp_dir().'/codex-academy';
 
