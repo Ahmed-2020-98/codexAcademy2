@@ -5,8 +5,9 @@ node_modules
 dist
 tests
 .phpunit*
+bootstrap/cache/*.php
 storage/logs/*
-storage/framework/cache/data/*
+storage/framework/cache/*
 storage/framework/sessions/*
 storage/framework/views/*
 database/*.sqlite*

@@ -77,6 +77,10 @@ The repository root is the Laravel app. The `preview` branch deploys to the Verc
 project `codex-academy` in team `ahmedgamal1`; automatic deployment of `main` is
 disabled. This is a demo environment with seeded accounts and simulated payments.
 
+For a manual preview, use `vercel deploy --target preview --yes --no-wait --scope ahmedgamal1`.
+An explicit target is required because recent CLI versions can otherwise assign
+a project's first deployment to production.
+
 - Runtime: Node.js 22, `vercel-php@0.8.0` (PHP 8.4), Frankfurt (`fra1`).
 - Build: `npm ci` then `npm run build`. `dist/` contains only public static assets;
   other requests, including Livewire, are handled by `api/index.php`.
