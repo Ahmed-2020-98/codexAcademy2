@@ -1,0 +1,127 @@
+/* Codex brand tokens — shared by the public site, student portal and Filament. */
+
+:root {
+    --cx-sky: #33b8f6;
+    --cx-sky-soft: #e6f6fe;
+    --cx-navy: #0a5a9e;
+    --cx-navy-deep: #073f70;
+    --cx-ink: #1e2430;
+    --cx-graphite: #4a4a4a;
+    --cx-muted: #5b6474;
+    --cx-line: #e3e9f1;
+    --cx-surface: #f6f9fc;
+    --cx-card: #ffffff;
+
+    --cx-font-display: 'Readex Pro', 'IBM Plex Sans Arabic', system-ui, sans-serif;
+    --cx-font-body: 'IBM Plex Sans Arabic', 'Readex Pro', system-ui, sans-serif;
+    --cx-font-mono: 'IBM Plex Mono', 'IBM Plex Sans Arabic', ui-monospace, monospace;
+
+    --cx-radius: 10px;
+    --cx-radius-sm: 6px;
+}
+
+/* ---- Logo --------------------------------------------------------------- */
+
+.cx-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--cx-graphite);
+}
+
+.cx-logo__mark {
+    width: 2.1rem;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.cx-logo__text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.cx-logo__word {
+    font-family: 'Readex Pro', sans-serif;
+    font-weight: 500;
+    font-size: 1.35rem;
+    letter-spacing: -0.02em;
+}
+
+.cx-logo__tag {
+    font-family: var(--cx-font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--cx-navy);
+    margin-top: 0.2rem;
+}
+
+.dark .cx-logo {
+    color: #e5e7eb;
+}
+
+.dark .cx-logo__tag {
+    color: var(--cx-sky);
+}
+
+/* ---- Mark ---------------------------------------------------------------- */
+
+.cx-mark__sky rect {
+    fill: var(--cx-sky);
+}
+
+.cx-mark__navy rect {
+    fill: var(--cx-navy);
+}
+
+.cx-mark--animated rect {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: cx-pixel-in 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation-delay: calc(var(--i) * 90ms + 150ms);
+}
+
+@keyframes cx-pixel-in {
+    from {
+        opacity: 0;
+        transform: scale(0.2) rotate(-12deg);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* Segmented "pixel" progress bar used for task and course progress. */
+.cx-pixels {
+    display: grid;
+    grid-template-columns: repeat(var(--cx-segments, 10), minmax(0, 1fr));
+    gap: 3px;
+}
+
+.cx-pixels > span {
+    aspect-ratio: 1 / 1;
+    max-height: 14px;
+    border-radius: 3px;
+    background: var(--cx-line);
+    transition: background-color 200ms ease, transform 200ms ease;
+}
+
+.cx-pixels > span.is-on {
+    background: var(--cx-sky);
+}
+
+.cx-pixels > span.is-on:nth-child(n + 6) {
+    background: var(--cx-navy);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cx-mark--animated rect {
+        animation: none;
+    }
+
+    .cx-pixels > span {
+        transition: none;
+    }
+}
