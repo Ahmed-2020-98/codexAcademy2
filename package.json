@@ -3,6 +3,7 @@
     "private": true,
     "type": "module",
     "scripts": {
+        "prebuild": "node scripts/prepare-vercel.mjs",
         "build": "vite build && node scripts/build-static.mjs",
         "dev": "vite"
     },
@@ -11,10 +12,12 @@
     },
     "devDependencies": {
         "@tailwindcss/vite": "^4.3.3",
+        "@vercel/build-utils": "13.2.9",
         "axios": "^1.11.0",
         "concurrently": "^9.0.1",
         "laravel-vite-plugin": "^2.0.0",
         "tailwindcss": "^4.3.3",
+        "vercel-php": "0.8.0",
         "vite": "^7.0.7"
     }
 }

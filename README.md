@@ -77,12 +77,18 @@ The repository root is the Laravel app. The `preview` branch deploys to the Verc
 project `codex-academy` in team `ahmedgamal1`; automatic deployment of `main` is
 disabled. This is a demo environment with seeded accounts and simulated payments.
 
-For a manual preview, use `vercel deploy --target preview --yes --no-wait --scope ahmedgamal1`.
-An explicit target is required because recent CLI versions can otherwise assign
-a project's first deployment to production.
+For a manual preview, use `vercel deploy --target staging --yes --no-wait --scope ahmedgamal1`.
+Vercel's deployment API calls the non-production target `staging`. An explicit
+target avoids automatic promotion of a project's first deployment.
+
+Automatic Git deployments require connecting the GitHub login in Vercel account
+settings, then running `vercel git connect --scope ahmedgamal1`. Direct CLI
+deployments work independently of that connection.
 
 - Runtime: Node.js 22, `vercel-php@0.8.0` (PHP 8.4), Frankfurt (`fra1`).
-- Build: `npm ci` then `npm run build`. `dist/` contains only public static assets;
+- Build: `npm ci` then `npm run build`. The prebuild hook installs Composer
+  dependencies with the pinned PHP runtime before compiling the Filament theme.
+  `dist/` contains only public static assets;
   other requests, including Livewire, are handled by `api/index.php`.
 - Filament's published assets are tracked because the PHP runtime's Composer
   build hook cannot publish browser assets. After upgrading Filament, run
