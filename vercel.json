@@ -11,8 +11,9 @@
             "maxDuration": 60
         }
     },
-    "rewrites": [
-        { "source": "/(.*)", "destination": "/api/index.php" }
+    "routes": [
+        { "handle": "filesystem" },
+        { "src": "/(.*)", "dest": "/api/index.php" }
     ],
     "git": {
         "deploymentEnabled": {
